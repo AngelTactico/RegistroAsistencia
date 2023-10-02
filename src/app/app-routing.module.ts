@@ -26,7 +26,12 @@ const routes: Routes = [
   {
     path: 'pregunta',
     loadChildren: () => import('./pages/pregunta/pregunta.module').then( m => m.PreguntaPageModule)
+  },
+  {
+    path: 'homep',
+    loadChildren: () => import('./pages/homep/homep.module').then( m => m.HomepPageModule)
   }
+
 ];
 
 @NgModule({

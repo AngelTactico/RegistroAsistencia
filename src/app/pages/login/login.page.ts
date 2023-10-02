@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
 
   public usuario: Usuario;
   constructor(private router: Router, private toastController: ToastController) {
-    this.usuario = new Usuario('', '', '', '', '');
+    this.usuario = new Usuario('', '', '', '', '', '');
     this.usuario.correo = '';
     this.usuario.password = '';
   }
@@ -38,7 +38,52 @@ export class LoginPage implements OnInit {
       }
     };
 
-    this.router.navigate(['/home'], navigationExtras);
+
+
+
+      if(this.usuario.admin == 'N') {
+  
+        this.mostrarMensaje('¡Bienvenido!');
+        const navigationExtras: NavigationExtras = {
+          state: {
+            usuario: this.usuario
+          }
+        };
+  
+        this.router.navigate(['/home'], navigationExtras);
+  
+        return;
+      }
+  
+      else if(this.usuario.admin == 'Y') {
+  
+        this.mostrarMensaje('¡Bienvenido!');
+        const navigationExtras: NavigationExtras = {
+          state: {
+            usuario: this.usuario
+          }
+        };
+  
+        this.router.navigate(['/homep'], navigationExtras);
+  
+        return;
+      }
+  
+     else {
+  
+      this.mostrarMensaje('ERROR:Sin parametros de identidad, consulte mesa ayuda. XXX-XXXX-XXXX');
+      const navigationExtras: NavigationExtras = {
+        state: {
+          usuario: this.usuario
+        }
+      };
+  
+  
+      this.router.navigate(['/login'], navigationExtras);
+  
+      return;   
+        
+      }
   }
 
   public validarUsuario(usuario: Usuario): boolean {

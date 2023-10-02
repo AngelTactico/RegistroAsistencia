@@ -12,7 +12,7 @@ export class RecuperarContraPage implements OnInit {
 
   public usuario: Usuario;
   constructor(private router: Router, private toastController: ToastController) {
-    this.usuario = new Usuario('', '', '', '', '');
+    this.usuario = new Usuario('', '', '', '', '', '');
     this.usuario.correo = '';
   }
 
