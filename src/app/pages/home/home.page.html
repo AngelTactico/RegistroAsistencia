@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title #titulo class="ion-text-left ion-text">
+      <div class="titulo">
+        Sistema de asistencia DUOC       
+      </div>      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-title class="ion-padding-top">
+    <ion-label>
+      <h1 class="ion-text-center">¡Bienvenido!</h1>
+        <br>
+      <p *ngIf="usuario">Alumno: {{ usuario.nombre }}</p>
+      <p *ngIf="usuario">Correo: {{ usuario.correo }}</p>
+    </ion-label>
+  </ion-title>
+  <ion-grid>
+    <ion-col col-6>
+      <ion-button color="danger" shape="block" (click)="goToLogout()">
+        CERRAR SESION
+      </ion-button>
+    </ion-col>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-left ion-text">
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
