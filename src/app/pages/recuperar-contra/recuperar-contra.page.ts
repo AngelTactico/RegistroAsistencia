@@ -35,20 +35,18 @@ export class RecuperarContraPage implements OnInit {
   }
 
 
-  public validarUsuarioRecu(usuario: Usuario): boolean {
-
-    const usu = this.usuario.buscarUsuarioValidoRecu(
-      this.usuario.correo);
-
+  public async validarUsuarioRecu(usuario: Usuario): Promise<boolean> {
+    const usu = await this.usuario.buscarUsuarioValidoRecu(usuario.correo);
+  
     if (usu) {
       this.usuario = usu;
       return true;
-    }
-    else {
+    } else {
       this.mostrarMensaje('Las credenciales no son correctas!');
       return false;
     }
   }
+  
   async mostrarMensaje(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({
         message: mensaje,

@@ -86,20 +86,18 @@ export class LoginPage implements OnInit {
       }
   }
 
-  public validarUsuario(usuario: Usuario): boolean {
-
-    const usu = this.usuario.buscarUsuarioValido(
-      this.usuario.correo, this.usuario.password);
-
+  public async validarUsuario(usuario: Usuario): Promise<boolean> {
+    const usu = await this.usuario.buscarUsuarioValido(usuario.correo, usuario.password);
+  
     if (usu) {
       this.usuario = usu;
       return true;
-    }
-    else {
+    } else {
       this.mostrarMensaje('Las credenciales no son correctas!');
       return false;
     }
   }
+  
 
   async mostrarMensaje(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({
