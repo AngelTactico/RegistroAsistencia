@@ -3,26 +3,26 @@ ion-header {
     --padding-bottom: 20px;
     --padding-end: 20px;
     --padding-start: 20px;
-  }
-  
-  ion-title {
+}
+
+ion-title {
     font-size: 0.8em;
-  }
-  
-  ion-header {
+}
+
+ion-header {
     background-color: azure;
-  }
-  
-  ion-label {
+}
+
+ion-label {
     width: 130px;
-  }
-  
-  ion-input, ion-select {
+}
+
+ion-input,
+ion-select {
     color: gray;
     text-align: right;
-  }
-  
-  
-  ng-deep .mat-datepicker-toggle{
+}
+
+ng-deep .mat-datepicker-toggle {
     color: blue;
-  }
+}

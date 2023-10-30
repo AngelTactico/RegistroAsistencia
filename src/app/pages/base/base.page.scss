@@ -1,4 +1,4 @@
-.imgBase{
+.imgBase {
     align-items: center;
     background-color: rgba(171, 205, 50, 0.541);
 }
@@ -14,8 +14,6 @@ ion-title {
     font-size: 0.8em;
 }
 
-
-::ng-deep .mat-datepicker-toggle{
+::ng-deep .mat-datepicker-toggle {
     color: blue;
-  }
-  
+}
