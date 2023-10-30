@@ -4,45 +4,37 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-pregunta',
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
 })
 export class PreguntaPage implements OnInit {
-
   public usuario: Usuario;
+  public respuesta: string = "";
 
-  public respuesta: string ="";
-
-   constructor(
-        private activeroute: ActivatedRoute
-      , private router: Router
-      , private alertController: AlertController) {
-
-
-    this.activeroute.queryParams.subscribe(params => {    
+  constructor(
+    private activeroute: ActivatedRoute,
+    private router: Router,
+    private alertController: AlertController
+  ) {
+    this.activeroute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-
-
         this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-
       } else {
         this.router.navigate(['/login']);
       }
-  });
-}
+    });
+  }
 
-public ngOnInit() {
-}
+  public ngOnInit() {
+  }
 
+  public async mostrarDatosPersona(): Promise<void> {
+    const usu = await this.usuario.buscarUsuarioValidoRecu(this.usuario.Correo);
 
-  public mostrarDatosPersona(): void {
-
-    if (this.usuario.respuestaSecreta.trim() === this.respuesta) {
-      this.presentAlert('CORRECTO', 'TU CONTRASEÑA ES '
-        + this.usuario.password);
+    if (usu && usu.Respuesta.trim() === this.respuesta) {
+      this.presentAlert('CORRECTO', 'TU CONTRASEÑA ES ' + usu.Contrasenna);
       return;
     }
 

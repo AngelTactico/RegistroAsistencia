@@ -1,33 +1,37 @@
 import { supabase } from '../supabase.service'; // Importa tu configuración de Supabase
 
 export class Usuario {
-  public correo = '';
-  public password = '';
-  public nombre = '';
-  public preguntaSecreta = '';
-  public respuestaSecreta = '';
-  public admin = '';
+  public Nombre = '';
+  public Correo = '';
+  public Contrasenna = '';
+  public Pregunta = '';
+  public Respuesta = '';
+  public Presente = '';
+  public Cargo = '';
 
   constructor(
-    correo: string,
-    password: string,
-    nombre: string,
-    preguntaSecreta: string,
-    respuestaSecreta: string,
-    admin: string
+    Nombre: string,
+    Correo: string,
+    Contrasenna: string,
+    Pregunta: string,
+    Respuesta: string,
+    Presente: string,
+    Cargo: string
   ) {
-    this.correo = correo;
-    this.password = password;
-    this.nombre = nombre;
-    this.preguntaSecreta = preguntaSecreta;
-    this.respuestaSecreta = respuestaSecreta;
-    this.admin = admin;
+    this.Nombre = Nombre;
+    this.Correo = Correo;
+    this.Contrasenna = Contrasenna;
+    this.Pregunta = Pregunta;
+    this.Respuesta = Respuesta;
+    this.Presente = Presente;
+    this.Cargo = Cargo;
+  
   }
 
   public async obtenerUsuariosDesdeSupabase(): Promise<Usuario[]> {
     // Realiza una consulta a Supabase para obtener los usuarios
     const { data, error } = await supabase
-      .from('Persona')
+      .from('Testing')
       .select('*');
 
     if (error) {
@@ -39,12 +43,13 @@ export class Usuario {
     if (data) {
       // Mapear los datos de Supabase a objetos Usuario y devolverlos
       return data.map((user: any) => new Usuario(
-        user.correo,
-        user.password,
-        user.nombre,
-        user.preguntaSecreta,
-        user.respuestaSecreta,
-        user.admin
+        user.Nombre,
+        user.Correo,
+        user.Contrasenna,
+        user.Pregunta,
+        user.Respuesta,
+        user.Presente,
+        user.Cargo
       ));
     }
 
@@ -52,14 +57,26 @@ export class Usuario {
   }
 
 
+
   public async buscarUsuarioValido(correo: string, password: string): Promise<Usuario | undefined> {
     const usuarios = await this.obtenerUsuariosDesdeSupabase();
-    return usuarios.find(usu => usu.correo === correo && usu.password === password);
+    
+    console.log('Usuarios obtenidos desde Supabase:', usuarios);
+  
+    const usuarioEncontrado = usuarios.find(usu => usu.Correo === correo && usu.Contrasenna === password);
+    if (usuarioEncontrado) {
+      console.log('Usuario válido encontrado:', usuarioEncontrado);
+    } else {
+      console.log('No se encontró un usuario válido para las credenciales proporcionadas.');
+    }
+  
+    return usuarioEncontrado;
+    return usuarios.find(usu => usu.Correo === correo && usu.Contrasenna === password);
   }
 
   public async buscarUsuarioValidoRecu(correo: string): Promise<Usuario | undefined> {
     const usuarios = await this.obtenerUsuariosDesdeSupabase();
-    return usuarios.find(usu => usu.correo === correo);
+    return usuarios.find(usu => usu.Correo === correo);
   }
 
 }
