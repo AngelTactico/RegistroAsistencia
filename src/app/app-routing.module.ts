@@ -30,7 +30,16 @@ const routes: Routes = [
   {
     path: 'homep',
     loadChildren: () => import('./pages/homep/homep.module').then( m => m.HomepPageModule)
+  },
+  {
+    path: 'asistencia',
+    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+  },
+  {
+    path: 'asistenciap',
+    loadChildren: () => import('./pages/asistenciap/asistenciap.module').then( m => m.AsistenciapPageModule)
   }
+
 
 ];
 

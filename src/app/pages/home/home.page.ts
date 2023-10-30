@@ -55,4 +55,12 @@ goToLogout(){
 this.router.navigate(['/'])
 }
 
+goToAsistencia(){
+  this.router.navigate(['/asistencia'])
+  }
+ 
+  goToHome(){
+    this.router.navigate(['/home'])
+    }  
+
 }

@@ -1,4 +1,10 @@
+import { Injectable } from '@angular/core';
 import { supabase } from '../supabase.service'; // Importa tu configuración de Supabase
+
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class Usuario {
   public Nombre = '';
@@ -79,5 +85,10 @@ export class Usuario {
     return usuarios.find(usu => usu.Correo === correo);
   }
 
+
+
+
+  
 }
+
 

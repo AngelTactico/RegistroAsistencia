@@ -25,8 +25,29 @@
   </ion-grid>
 </ion-content>
 <ion-footer>
+<<<<<<< Updated upstream
   <ion-toolbar color="primary">
     <ion-title class="ion-text-left ion-text">
     </ion-title>
   </ion-toolbar>
+=======
+    <ion-footer>
+        <ion-toolbar>
+            <ion-segment value="inicio" (ionChange)="segmentChanged($event)">
+
+                <ion-segment-button (click)="goToHome()">
+                    <ion-icon name="home"></ion-icon>
+                    <ion-label>Inicio</ion-label>
+                </ion-segment-button>
+
+
+                <ion-segment-button (click)="goToAsistencia()">
+                    <ion-icon name="school-outline"></ion-icon>
+                    <ion-label>Clase</ion-label>
+                </ion-segment-button>
+
+            </ion-segment>
+        </ion-toolbar>
+    </ion-footer>
+>>>>>>> Stashed changes
 </ion-footer>
